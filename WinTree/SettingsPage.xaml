@@ -1,0 +1,57 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="TreeMap.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TreeMap"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d"
+    Background="Transparent"
+    NavigationCacheMode="Enabled">
+
+    <StackPanel Padding="16">
+        <Button Content="Back" Click="BackButton_Click"/>
+        <TextBlock Text="Settings" Style="{StaticResource TitleTextBlockStyle}" Margin="0,16,0,16"/>
+        <StackPanel Spacing="4">
+            <controls:SettingsCard x:Name="settingsCard"
+                               Header="File size calculation"
+                               Description="Real file size includes unsynced cloud files."
+                               HeaderIcon="{ui:FontIcon Glyph=&#xe7c3;}">
+                <!--IsEnabled="{x:Bind IsCardEnabled, Mode=OneWay}"-->
+                <ComboBox SelectionChanged="fileSize_SelectionChanged" 
+                          SelectedItem="{x:Bind local:Settings.SettingsDisplayer('fileSizeSetting', s.UseFileSizeOnDisk), Mode=OneWay}">
+                    <x:String>Use file size on disk</x:String>
+                    <x:String>Use real file size</x:String>
+                </ComboBox>
+            </controls:SettingsCard>
+            <controls:SettingsCard Header="Reset App to defaults"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xE845;}"
+                                   Description="Settings, recent Folders, etc.">
+                <Button
+                    Content="Reset"
+                    x:Name="resetButton"
+                    Click="resetButton_Click"
+                    VerticalAlignment="Center" 
+                    Grid.Column="1">
+                </Button>
+            </controls:SettingsCard>
+            <controls:SettingsCard Header="Automatically expand the tree view when a selection is made in the graph (beta)"
+                                   Description=""
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xe8a4;}">
+                <ToggleSwitch IsOn="{x:Bind s.MirrorSelectionInTreeView, Mode=TwoWay}"/>
+            </controls:SettingsCard>
+            <InfoBar
+                    Margin="0,16,0,0"
+                    IsOpen="True"
+                    IsIconVisible="True"
+                    IsClosable="False"
+                    Title="Get more out of TreeMap"
+                    Message="In the graph, left click to select a file, right click to select a folder and middle click to open a file or folder in File Explorer" />
+        </StackPanel>
+    </StackPanel>
+</Page>

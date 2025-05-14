@@ -1,0 +1,38 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Window
+    x:Class="TreeMap.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TreeMap"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid> <!--KeyUp="Grid_KeyUp"-->
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="Windows10AppTitleBarRow" Height="0"/>
+        </Grid.RowDefinitions>
+
+        <!--TODO THIS HAS TO GO INTO MAINPAGE-->
+        <StackPanel 
+            x:Name="Windows10AppTitleBar"
+            Visibility="Collapsed"
+            Background="Transparent"
+            Grid.Row="0"
+            Orientation="Horizontal">
+            <TextBlock 
+                x:Name="AppTitle" 
+                Style="{StaticResource CaptionTextBlockStyle}" 
+                Text="{x:Bind Title}" 
+                VerticalAlignment="Center" 
+                Margin="8,0,0,0" 
+                TextWrapping="NoWrap"/>
+        </StackPanel> 
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinTree (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinTree (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
